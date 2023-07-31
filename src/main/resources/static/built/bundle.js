@@ -34105,7 +34105,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
     _this = _super.call(this, props);
     _this.state = {
-      instrumentos: []
+      tortas: []
     };
     return _this;
   }
@@ -34115,58 +34115,60 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
       client({
         method: 'GET',
-        path: '/api/instrumentos'
+        path: '/api/tortas'
       }).done(function (response) {
         _this2.setState({
-          instrumentos: response.entity._embedded.instrumentos
+          tortas: response.entity._embedded.tortas
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(InstrumentoList, {
-        instrumentos: this.state.instrumentos
+      return /*#__PURE__*/React.createElement(TortaList, {
+        tortas: this.state.tortas
       });
     }
   }]);
   return App;
 }(React.Component);
-var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
-  _inherits(InstrumentoList, _React$Component2);
-  var _super2 = _createSuper(InstrumentoList);
-  function InstrumentoList() {
-    _classCallCheck(this, InstrumentoList);
+var TortaList = /*#__PURE__*/function (_React$Component2) {
+  _inherits(TortaList, _React$Component2);
+  var _super2 = _createSuper(TortaList);
+  function TortaList() {
+    _classCallCheck(this, TortaList);
     return _super2.apply(this, arguments);
   }
-  _createClass(InstrumentoList, [{
+  _createClass(TortaList, [{
     key: "render",
     value: function render() {
-      var instrumentos = this.props.instrumentos.map(function (instrumento) {
-        return /*#__PURE__*/React.createElement(Instrumento, {
-          key: instrumento._links.self.href,
-          instrumento: instrumento
+      var tortas = this.props.tortas.map(function (torta) {
+        return /*#__PURE__*/React.createElement(Torta, {
+          key: torta._links.self.href,
+          torta: torta
         });
       });
-      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Categor\xEDa"), /*#__PURE__*/React.createElement("th", null, "Descripci\xF3n")), instrumentos));
+      return /*#__PURE__*/React.createElement("table", {
+        border: "1"
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Tipo"), /*#__PURE__*/React.createElement("th", null, "Ingredientes")), tortas));
     }
   }]);
-  return InstrumentoList;
+  return TortaList;
 }(React.Component);
-var Instrumento = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Instrumento, _React$Component3);
-  var _super3 = _createSuper(Instrumento);
-  function Instrumento() {
-    _classCallCheck(this, Instrumento);
+var Torta = /*#__PURE__*/function (_React$Component3) {
+  _inherits(Torta, _React$Component3);
+  var _super3 = _createSuper(Torta);
+  function Torta() {
+    _classCallCheck(this, Torta);
     return _super3.apply(this, arguments);
   }
-  _createClass(Instrumento, [{
+  _createClass(Torta, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.instrumento.nombre), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.categoria), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.descripcion));
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.torta.nombre), /*#__PURE__*/React.createElement("td", null, this.props.torta.categoria), /*#__PURE__*/React.createElement("td", null, this.props.torta.ingredientes));
     }
   }]);
-  return Instrumento;
+  return Torta;
 }(React.Component);
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('react'));
 

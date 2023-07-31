@@ -6,49 +6,49 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {instrumentos: []};
+		this.state = {tortas: []};
 	}
 
 	componentDidMount() { 
-		client({method: 'GET', path: '/api/instrumentos'}).done(response => {
-			this.setState({instrumentos: response.entity._embedded.instrumentos});
+		client({method: 'GET', path: '/api/tortas'}).done(response => {
+			this.setState({tortas: response.entity._embedded.tortas});
 		});
 	}
 
 	render() { 
 		return (
-			<InstrumentoList instrumentos={this.state.instrumentos}/>
+			<TortaList tortas={this.state.tortas}/>
 		)
 	}
 }
 
-class InstrumentoList extends React.Component{
+class TortaList extends React.Component{
 	render() {
-		const instrumentos = this.props.instrumentos.map(instrumento =>
-			<Instrumento key={instrumento._links.self.href} instrumento={instrumento}/>
+		const tortas = this.props.tortas.map(torta =>
+			<Torta key={torta._links.self.href} torta={torta}/>
 		);
 		return (
-			<table>
+			<table border="1">
 				<tbody>
 					<tr>
 						<th>Nombre</th>
-						<th>Categoría</th>
-						<th>Descripción</th>
+						<th>Tipo</th>
+						<th>Ingredientes</th>
 					</tr>
-					{instrumentos}
+					{tortas}
 				</tbody>
 			</table>
 		)
 	}
 }
 
-class Instrumento extends React.Component{
+class Torta extends React.Component{
 	render() {
 		return (
 			<tr>
-				<td>{this.props.instrumento.nombre}</td>
-				<td>{this.props.instrumento.categoria}</td>
-				<td>{this.props.instrumento.descripcion}</td>
+				<td>{this.props.torta.nombre}</td>
+				<td>{this.props.torta.categoria}</td>
+				<td>{this.props.torta.ingredientes}</td>
 			</tr>
 		)
 	}

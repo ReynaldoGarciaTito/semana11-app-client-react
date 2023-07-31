@@ -1,21 +1,14 @@
-@server = https://reynaldogarciatito-musical-halibut-69rwgv445jxhr794-8080.preview.app.github.dev/api
+@server = https://reynaldogarciatito-humble-space-9p447rj5wv72pvw6-8080.preview.app.github.dev/api
 
 ### 
 GET {{server}}
 
 ### 
-GET {{server}}/instrumentos
+GET {{server}}/tortas
 
 ###
-POST {{server}}/employees
+POST {{server}}/tortas
 Content-Type: application/json
 
-{"firstName": "Reynaldo", "lastName": "García Tito", "description": "semana 10"}
-
-###
-POST {{server}}/instrumentos
-Content-Type: application/json
-
-{"nombre": "Zampoña", "categoria": "Instrumento de viento", "descripcion": "semana 11"}
-
+{"nombre": "Torta Ricotta", "categoria": "Glaseado", "ingredientes": "Azucar, harina, platano, etc"}
 
